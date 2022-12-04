@@ -1,4 +1,4 @@
-import { HashRouter as Routers, Routes, Route, Router } from 'react-router-dom';
+import { HashRouter as Routers, Routes, Route } from 'react-router-dom';
 import publicRoutes from './routers';
 
 import { DefaultLayout } from '~/screen';

@@ -5,7 +5,11 @@ import styles from './navbarRight.module.scss';
 const cx = classNames.bind(styles);
 
 function NavBarRight() {
-    return <p className={cx('title')}>NavBarRight</p>;
+    return (
+        <div className={cx('wraaper')}>
+            <p>navbar right</p>
+        </div>
+    );
 }
 
 export default NavBarRight;

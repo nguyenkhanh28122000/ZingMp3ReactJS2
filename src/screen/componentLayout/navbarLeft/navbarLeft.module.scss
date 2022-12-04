@@ -1,4 +1,107 @@
-.title {
-    font-size: 14px;
-    color: red;
+.wrapper {
+    width: 200px;
+    background-color: var(--sidebar-bg);
+
+    .logo {
+        width: 100%;
+        height: 70px;
+        background-image: url(../../../assets/img/sidebar-icon/logo/logo-dark.svg);
+        background-size: 70%;
+        background-position-x: center;
+        background-position-y: 60%;
+        background-repeat: no-repeat;
+    }
+
+    .content-1 {
+        margin-bottom: 1.5rem;
+    }
+    .border {
+        margin: 0 var(--side-padding);
+        border-top: 0.1rem solid rgba(255, 255, 255, 0.1);
+    }
+    .content-2 {
+        margin-top: 1.5rem;
+    }
+
+    .addItem {
+        height: 50px;
+        border-top: 0.1rem solid rgba(255, 255, 255, 0.1);
+    }
+
+    .boxBuyVip {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+        margin: 1rem 2rem 0;
+        background-image: linear-gradient(117deg, #5a4be7, #c86dd7);
+        border-radius: 1rem;
+        align-items: center;
+
+        .text {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--white-color);
+            width: 80%;
+            text-align: justify;
+
+            margin-bottom: 1rem;
+        }
+
+        .buttom {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            background-color: #ffdb00;
+            color: var(--black-color);
+            border: none;
+            cursor: pointer;
+        }
+
+        .buttom:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+// libary
+.sidebarLibary {
+    position: relative;
+    height: calc(100vh - 421px);
+    overflow-y: auto;
+
+    .libary {
+        width: 100%;
+        height: 40px;
+        color: var(--white-color);
+        border-left: 0.3rem solid transparent;
+        padding: 3rem var(--side-padding) 2rem calc(var(--side-padding) - 3px);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        -webkit-user-select: none;
+        user-select: none;
+
+        .title {
+            flex: 1;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .icon {
+            display: none;
+            font-size: 1.4rem;
+        }
+
+        &:hover {
+            .icon {
+                display: block;
+            }
+        }
+    }
 }

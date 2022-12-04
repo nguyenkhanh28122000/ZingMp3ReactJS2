@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
     return (
-        <>
+        <div className={cx('wrapper')}>
             <div className={cx('mainBody')}>
                 <NavBarLeft />
                 <div className={cx('body')}>
@@ -19,7 +19,7 @@ function DefaultLayout({ children }) {
                 <NavBarRight />
             </div>
             <BoxPlaySing />
-        </>
+        </div>
     );
 }
 

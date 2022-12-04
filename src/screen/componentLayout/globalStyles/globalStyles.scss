@@ -28,6 +28,7 @@
 
     --sidebar-bg: rgba(255, 255, 255, 0.05);
     --active-color: rgba(255, 255, 255, 0.1);
+    --active-color-hover: rgba(255, 255, 255, 0.05);
     --blur-color: rgba(255, 255, 255, 0.5);
 
     --side-padding: 28px;
@@ -52,6 +53,10 @@ html {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6rem;
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* -- css Scroll-Bar --  */
