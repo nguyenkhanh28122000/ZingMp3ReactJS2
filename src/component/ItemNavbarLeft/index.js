@@ -1,4 +1,4 @@
-import { useRef, memo, useCallback } from 'react';
+import { useRef, memo } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './style.module.scss';
@@ -21,13 +21,13 @@ function ItemNavBarLeft({ to, isActive, className, icon, title, noti, itemLibary
         active: isActive,
     });
 
-    const handelClick = useCallback(() => {
+    const handelClick = () => {
         boxRef.current.style.opacity = 0.4;
         setTimeout(() => {
             boxRef.current.style.opacity = 0.8;
         }, 100);
         onclick();
-    }, []);
+    };
     return (
         <Comp ref={boxRef} className={clases} onClick={handelClick} to={to}>
             {icon ? <div className={cx('icon')}>{icon}</div> : null}

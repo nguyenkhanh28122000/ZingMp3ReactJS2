@@ -1,14 +1,12 @@
 import {
-    faAdd,
     faBroadcastTower,
     faChartLine,
     faCompactDisc,
     faListAlt,
     faMusic,
-    faPencilAlt,
     faPhotoVideo,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCirclePause, faClock, faFileAudio, faHourglass, faStar } from '@fortawesome/free-regular-svg-icons';
+import { faCirclePause, faHourglass, faStar } from '@fortawesome/free-regular-svg-icons';
 
 import configs from '~/configs';
 

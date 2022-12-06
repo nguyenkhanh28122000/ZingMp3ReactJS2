@@ -1,0 +1,96 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: transparent;
+
+    .play {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.5rem;
+        object-fit: contain;
+        margin: 0 1.2rem 0 0.8rem;
+    }
+
+    .info {
+        .nameSong {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--white-color);
+            text-transform: capitalize;
+            margin-bottom: 0.4rem;
+            text-overflow: ellipsis;
+        }
+
+        .singer {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--blur-color);
+            text-overflow: ellipsis;
+            text-transform: capitalize;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: transparent !important;
+        .boxHover {
+            display: flex;
+        }
+    }
+
+    .boxHover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: var(--active-color);
+        border-radius: 1rem;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+
+        .iconPlay {
+            width: 4rem;
+            height: 4rem;
+            font-size: 1.8rem;
+            margin: 0 1.2rem 0 0.8rem;
+            color: var(--white-color);
+            background-color: rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .songPlay {
+            width: 1.8rem;
+            height: 1.8rem;
+            margin: auto;
+        }
+
+        .content {
+            margin-right: 2rem;
+            font-size: 1.6rem;
+
+            .iconHeart {
+                color: var(--primary-color);
+                margin-right: 1rem;
+            }
+
+            .iconMenu {
+                color: var(--white-color);
+            }
+        }
+    }
+}
+
+.wrapper.active {
+    background-color: var(--primary-color);
+}
