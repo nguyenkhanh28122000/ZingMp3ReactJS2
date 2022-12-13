@@ -44,6 +44,7 @@ function HomeScreen() {
 
             <div className={cx('homeBody')}>
                 <HomeMain />
+                <HomeMain />
             </div>
         </div>
     );
