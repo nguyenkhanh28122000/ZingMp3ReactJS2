@@ -12,7 +12,7 @@
         margin: 2rem 0 1rem 1rem;
     }
     .listSongs {
-        height: calc(100vh - 70px);
+        height: calc(100vh - var(--music-control-height) - 70px);
         overflow-y: auto;
     }
 }

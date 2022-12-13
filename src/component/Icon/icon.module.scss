@@ -1,0 +1,15 @@
+.wrapper {
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    transform: translateX(-0.1rem);
+    cursor: pointer;
+}
+
+.wrapper.hoverOpacity:hover {
+    opacity: 0.8;
+}
+
+.wrapper.hoverBackgroud:hover {
+    background-color: var(--active-color);
+}

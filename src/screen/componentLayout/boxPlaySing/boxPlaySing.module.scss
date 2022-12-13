@@ -1,4 +1,99 @@
-.title {
-    font-size: 14px;
-    color: red;
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: url(../../../assets/img/cntrl-player/playerThemes/theme1.png);
+    height: var(--music-control-height);
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+    user-select: none;
+
+    .boxSong {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3000;
+        background-color: var(--header-color-0);
+        transition: var(--transition-delay);
+        padding: 2rem 4rem 6rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+        .imgSong {
+            width: 28rem;
+            height: 28rem;
+            border-radius: 100%;
+        }
+
+        .info {
+            text-align: center;
+            .nameSong {
+                font-size: 2rem;
+                font-weight: 500;
+                color: var(--white-color);
+                padding: 0.6rem 0;
+            }
+
+            .singer {
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.5);
+                padding: 0.6rem 0;
+            }
+        }
+    }
+
+    .boxSong.active {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        transition: var(--transition-delay);
+    }
+
+    .headerBoxSong {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        height: 7rem;
+        justify-content: space-between;
+
+        .logo {
+            width: 5rem;
+            width: 5rem;
+            border-radius: 100%;
+        }
+
+        .contentHeader {
+            font-size: 2rem;
+            color: var(--white-color);
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .boxClose {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            background-color: transparent;
+            font-size: 4rem !important;
+            color: var(--white-color);
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--active-color);
+                color: var(--primary-color);
+            }
+        }
+    }
 }

@@ -1,0 +1,67 @@
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .boxVolume {
+        display: flex;
+        align-items: center;
+
+        .iconVolume {
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 100%;
+            background-color: transparent;
+            font-size: 1.8rem !important;
+
+            &:hover {
+                background-color: var(--active-color);
+            }
+        }
+
+        .volume {
+            width: 8rem;
+            margin: 0 1rem;
+            height: 3px;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            -webkit-transition: 0.2s;
+            transition: opacity 0.2s;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &:hover {
+                height: 5px;
+            }
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 1.2rem;
+                height: 1.2rem;
+                border-radius: 100%;
+                background-color: var(--primary-color);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .iconVideo {
+        padding: 1rem 0.8rem;
+        margin: 0 0.8rem;
+    }
+
+    .iconMic {
+        padding: 0.9rem 1rem;
+        margin: 0 0.8rem;
+    }
+
+    .icon {
+        padding: 1rem 1.1rem;
+        margin: 0 0.8rem;
+    }
+}

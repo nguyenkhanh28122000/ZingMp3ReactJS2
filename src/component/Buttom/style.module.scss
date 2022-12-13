@@ -1,0 +1,39 @@
+.wrapper {
+    min-width: 8rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.wrapper.btnBuy {
+    padding: 0.7rem 2rem;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: var(--yellow-color);
+}
+
+.wrapper.btnCode {
+    padding: 0.7rem 2rem;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: var(--active-color);
+}
+
+.wrapper.btnTaps {
+    padding: 0.5rem 1.5rem;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.wrapper.btnTaps.active {
+    background-color: var(--option-color-0);
+}
+
+.hoverOpacity:hover {
+    opacity: 0.8;
+}

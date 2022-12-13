@@ -18,6 +18,7 @@
     }
 
     .info {
+        flex: 1;
         .nameSong {
             font-size: 1.3rem;
             font-weight: 500;
@@ -36,56 +37,74 @@
         }
     }
 
-    &:hover {
-        cursor: pointer;
-        background-color: transparent !important;
-        .boxHover {
-            display: flex;
-        }
-    }
-
-    .boxHover {
+    .boxSongPlay {
         position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: var(--active-color);
-        border-radius: 1rem;
         display: none;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
-        .iconPlay {
-            width: 4rem;
-            height: 4rem;
-            font-size: 1.8rem;
-            margin: 0 1.2rem 0 0.8rem;
-            color: var(--white-color);
-            background-color: rgba(0, 0, 0, 0.5);
+        width: 4rem;
+        height: 4rem;
+        margin: 0 1.2rem 0 0.8rem;
+        border-radius: 0.5rem;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        background-color: rgba(0, 0, 0, 0.5);
 
         .songPlay {
+            display: none;
             width: 1.8rem;
             height: 1.8rem;
-            margin: auto;
         }
 
-        .content {
-            margin-right: 2rem;
-            font-size: 1.6rem;
+        .iconPlay {
+            font-size: 1.8rem;
+            color: var(--white-color);
+        }
 
-            .iconHeart {
-                color: var(--primary-color);
-                margin-right: 1rem;
+        // .songPlay.active {
+        //     display: none;
+        // }
+
+        // .iconPlay.active {
+        //     display: none;
+        // }
+    }
+
+    // .iconPlay {
+    //     width: 4rem;
+    //     height: 4rem;
+    //     font-size: 1.8rem;
+    //     margin: 0 1.2rem 0 0.8rem;
+    //     color: var(--white-color);
+    //     background-color: rgba(0, 0, 0, 0.5);
+
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
+
+    .content {
+        display: none;
+        margin-right: 1rem;
+        font-size: 1.6rem;
+
+        .iconHeart {
+            color: var(--primary-color);
+            // margin-right: 1rem;
+            padding: 0.8rem;
+            border-radius: 50px;
+            &:hover {
+                background-color: var(--active-color);
             }
+        }
 
-            .iconMenu {
-                color: var(--white-color);
+        .iconMenu {
+            padding: 0.8rem;
+            border-radius: 50px;
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--active-color);
             }
         }
     }
@@ -93,4 +112,46 @@
 
 .wrapper.active {
     background-color: var(--primary-color);
+    .boxSongPlay {
+        display: flex;
+
+        .songPlay.isPlay {
+            display: block;
+        }
+
+        .songPlay.isPause {
+            display: none;
+        }
+
+        .iconPlay.isPause {
+            display: block;
+        }
+        .iconPlay.isPlay {
+            display: none;
+        }
+    }
+
+    // .boxSongPlay.isPause {
+    //     display: flex;
+    //     .songPlay {
+    //         display: none;
+    //     }
+
+    //     .iconPlay {
+    //         display: block;
+    //     }
+    // }
+}
+
+.wrapper:hover {
+    background-color: var(--active-color);
+    cursor: pointer;
+
+    .content {
+        display: block;
+    }
+
+    .boxSongPlay {
+        display: flex;
+    }
 }

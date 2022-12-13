@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .title {
+        color: var(--white-color);
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .contentLeft {
+        display: flex;
+        align-items: center;
+    }
+
+    .showAllStyle {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--white-color);
+        text-transform: uppercase;
+        margin-right: 2rem;
+        opacity: 0;
+        transform: translateX(-2rem);
+        transition: var(--transition-delay2);
+
+        &:hover {
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+    }
+
+    .showAllStyle.isShow {
+        transition: var(--transition-delay2);
+
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .btnPlay {
+        background-color: var(--primary-color);
+    }
+}

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState, memo } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './navbarRight.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ItemSidebarRight } from '~/component';
+import { ItemSongInfo } from '~/component';
 import { faEllipsisH, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 
 import { listSongs } from '~/assets';
@@ -14,10 +14,10 @@ const cx = classNames.bind(styles);
 function NavBarRight() {
     const [waitingList, setWaitingList] = useState(listSongs.filter((item) => item.song_id !== 0));
     const [isOpen, setIsOpen] = useState({ index: 0, id: 0 });
-    console.log(isOpen);
+    // console.log(isOpen);
     const [ListOpen, setListOpen] = useState([listSongs[0]]);
 
-    console.log(waitingList[0]);
+    // console.log(waitingList[0]);
 
     const handelPlaySong = (song) => {
         setWaitingList((iprev) => {
@@ -66,7 +66,7 @@ function NavBarRight() {
             <div className={cx('listSongs')}>
                 {ListOpen.map((song, index) => {
                     return (
-                        <ItemSidebarRight
+                        <ItemSongInfo
                             key={song.song_id}
                             imageSong={song.song_img}
                             name={song.song_name}
@@ -79,7 +79,7 @@ function NavBarRight() {
                 <div className={cx('text')}>Tiếp theo</div>
                 {waitingList.map((song, index) => {
                     return (
-                        <ItemSidebarRight
+                        <ItemSongInfo
                             key={song.song_id}
                             imageSong={song.song_img}
                             name={song.song_name}
@@ -93,4 +93,4 @@ function NavBarRight() {
     );
 }
 
-export default NavBarRight;
+export default memo(NavBarRight);

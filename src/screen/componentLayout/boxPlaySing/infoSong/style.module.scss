@@ -1,0 +1,44 @@
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    user-select: none;
+    cursor: pointer;
+
+    .play {
+        width: 6rem;
+        height: 6rem;
+        border: 0.2rem solid var(--white-color);
+        border-radius: 100%;
+        margin-right: 1.5rem;
+        object-fit: contain;
+    }
+
+    .info {
+        margin-right: 4rem;
+        .nameSong {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--white-color);
+            text-transform: capitalize;
+            margin-bottom: 0.4rem;
+            text-overflow: ellipsis;
+        }
+
+        .singer {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--blur-color);
+            text-overflow: ellipsis;
+            text-transform: capitalize;
+        }
+    }
+
+    .content {
+        .icon {
+            margin-right: 1rem;
+        }
+    }
+}
