@@ -1,11 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faHeart, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 
-import BoxControl from '../boxControl';
+// import BoxControl from '../boxControl';
 import { IconComp } from '~/component';
 
 import { colors } from '~/assets';

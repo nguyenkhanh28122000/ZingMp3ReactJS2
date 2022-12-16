@@ -6,13 +6,13 @@ import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faPlay, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPlay, faEllipsisH, faPhotoVideo, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
 import { songImgs } from '~/assets';
 
 const cx = classNames.bind(styles);
 
-function BoxSingInfo({ imageSong, name, singer, isActive, className, onClick, ...rest }) {
+function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, className, onClick, ...rest }) {
     const [isPlay, setIsPlay] = useState(isActive ? true : false);
 
     useEffect(() => {
@@ -35,13 +35,14 @@ function BoxSingInfo({ imageSong, name, singer, isActive, className, onClick, ..
     const clases = cx('wrapper', {
         [className]: className,
         active: isActive,
+        songHome: isSongHome,
     });
 
     return (
         <div className={clases} {...props}>
             <img src={imageSong} alt={'error'} className={cx('play')} />
             <div className={cx('boxSongPlay')} onClick={handelPause}>
-                <img src={songImgs.ICONPLAY} className={cx('songPlay', isPlay ? 'isPlay' : 'isPause')} />
+                <img src={songImgs.ICONPLAY} alt="error" className={cx('songPlay', isPlay ? 'isPlay' : 'isPause')} />
 
                 <FontAwesomeIcon icon={faPlay} className={cx('iconPlay', isPlay ? 'isPlay' : 'isPause')} />
             </div>
@@ -51,9 +52,25 @@ function BoxSingInfo({ imageSong, name, singer, isActive, className, onClick, ..
                 <p className={cx('singer')}>{singer}</p>
             </div>
 
+            {isSongHome ? (
+                <div className={cx('boxRightSongHome')}>
+                    <p>{`${name}(Remix)`}</p>
+                    <div className={cx('left')}>
+                        <FontAwesomeIcon icon={faHeart} className={cx('iconHeart')} />
+                        <span>{duration}</span>
+                    </div>
+                </div>
+            ) : null}
+
             <div className={cx('content')}>
-                <FontAwesomeIcon icon={faHeart} className={cx('iconHeart')} />
-                <FontAwesomeIcon icon={faEllipsisH} className={cx('iconMenu')} />
+                {isSongHome ? (
+                    <>
+                        <FontAwesomeIcon icon={faPhotoVideo} className={cx('icon')} />
+                        <FontAwesomeIcon icon={faMicrophone} className={cx('icon')} />
+                    </>
+                ) : null}
+                <FontAwesomeIcon icon={faHeart} className={cx('iconHeart', 'icon')} />
+                <FontAwesomeIcon icon={faEllipsisH} className={cx('icon')} />
             </div>
         </div>
     );

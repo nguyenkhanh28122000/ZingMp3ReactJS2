@@ -60,28 +60,35 @@
             font-size: 1.8rem;
             color: var(--white-color);
         }
-
-        // .songPlay.active {
-        //     display: none;
-        // }
-
-        // .iconPlay.active {
-        //     display: none;
-        // }
     }
+    // boxright home
+    .boxRightSongHome {
+        width: 50%;
+        float: right;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-    // .iconPlay {
-    //     width: 4rem;
-    //     height: 4rem;
-    //     font-size: 1.8rem;
-    //     margin: 0 1.2rem 0 0.8rem;
-    //     color: var(--white-color);
-    //     background-color: rgba(0, 0, 0, 0.5);
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--blur-color);
 
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    // }
+        .left {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            .iconHeart {
+                color: var(--primary-color);
+                font-size: 1.6rem;
+                margin-right: 1rem;
+                padding: 0.8rem;
+                border-radius: 50px;
+                &:hover {
+                    background-color: var(--active-color);
+                }
+            }
+        }
+    }
 
     .content {
         display: none;
@@ -89,7 +96,7 @@
         font-size: 1.6rem;
 
         .iconHeart {
-            color: var(--primary-color);
+            color: var(--primary-color) !important;
             // margin-right: 1rem;
             padding: 0.8rem;
             border-radius: 50px;
@@ -98,7 +105,7 @@
             }
         }
 
-        .iconMenu {
+        .icon {
             padding: 0.8rem;
             border-radius: 50px;
             color: var(--white-color);
@@ -130,17 +137,28 @@
             display: none;
         }
     }
+}
 
-    // .boxSongPlay.isPause {
-    //     display: flex;
-    //     .songPlay {
-    //         display: none;
-    //     }
+.wrapper.songHome.active {
+    background-color: var(--active-color);
+    .boxSongPlay {
+        display: flex;
 
-    //     .iconPlay {
-    //         display: block;
-    //     }
-    // }
+        .songPlay.isPlay {
+            display: block;
+        }
+
+        .songPlay.isPause {
+            display: none;
+        }
+
+        .iconPlay.isPause {
+            display: block;
+        }
+        .iconPlay.isPlay {
+            display: none;
+        }
+    }
 }
 
 .wrapper:hover {
@@ -149,6 +167,29 @@
 
     .content {
         display: block;
+    }
+
+    .boxSongPlay {
+        display: flex;
+    }
+}
+
+.wrapper.songHome:hover {
+    background-color: var(--active-color);
+    cursor: pointer;
+
+    .boxRightSongHome .left {
+        display: none;
+    }
+
+    .content {
+        position: absolute;
+        right: 0;
+        display: block;
+
+        .icon {
+            margin: 0 0.5rem;
+        }
     }
 
     .boxSongPlay {

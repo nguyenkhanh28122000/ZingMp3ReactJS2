@@ -7,12 +7,20 @@ import { BoxSingInfo } from '~/component';
 
 const cx = classNames.bind(styles);
 
-function ItemSongInfo({ imageSong, name, singer, heightStyle, isActive, onClick }) {
+function ItemSongInfo({ imageSong, name, singer, heightStyle, isActive, duration, isSongHome, onClick }) {
     // const [isActive, setIsActive] = useState(false);
 
     return (
         <div className={cx('wrapper')} style={{ height: `${heightStyle}rem` }}>
-            <BoxSingInfo imageSong={imageSong} name={name} singer={singer} isActive={isActive} onClick={onClick} />
+            <BoxSingInfo
+                imageSong={imageSong}
+                name={name}
+                singer={singer}
+                duration={duration}
+                isSongHome={isSongHome}
+                isActive={isActive}
+                onClick={onClick}
+            />
         </div>
     );
 }

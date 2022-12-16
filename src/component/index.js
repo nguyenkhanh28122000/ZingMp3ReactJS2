@@ -5,3 +5,5 @@ export { default as IconComp } from './Icon';
 export { default as ButtomCop } from './Buttom';
 export { default as HeaderBox } from './HeaderBox';
 export { default as WraMouse } from './WraMouse';
+export { default as ListImgSong } from './ListImgSong';
+export { default as ImageHoverZoom } from './ImageHoverZoom';
