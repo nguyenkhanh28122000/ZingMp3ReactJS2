@@ -3,23 +3,19 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './boxPlaySing.module.scss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 import BoxControl from './boxControl';
 import InfoSong from './infoSong';
 import BoxControlVolume from './boxControlVolume';
-// import { IconComp } from '~/component';
-import { listSongs, colors } from '~/assets';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { listSongs } from '~/assets';
 
 const cx = classNames.bind(styles);
 
 function BoxPlaySing() {
     const [showSong, setShowSong] = useState(false);
-
-    // const getTimeSong = ({ time, isPause, isRandom, isReat }) => {
-    //     console.log(time, isPause, isRandom, isReat);
-    // };
 
     return (
         <div className={cx('wrapper')}>
@@ -46,11 +42,13 @@ function BoxPlaySing() {
                         <FontAwesomeIcon icon={faClose} />
                     </div>
                 </div>
+
                 <img src={listSongs[0].song_img} alt={'error'} className={cx('imgSong')} />
                 <div className={cx('info')}>
                     <h3 className={cx('nameSong')}>{listSongs[0].song_name}</h3>
                     <p className={cx('singer')}>{listSongs[0].singer}</p>
                 </div>
+
                 <BoxControl />
             </div>
         </div>

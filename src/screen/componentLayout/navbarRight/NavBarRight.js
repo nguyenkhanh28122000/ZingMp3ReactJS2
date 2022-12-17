@@ -1,23 +1,46 @@
-import { useState, memo } from 'react';
+import { useState, memo, useContext, useEffect } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './navbarRight.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+
+import SongPlayContext from '~/store/Context';
 
 import { ItemSongInfo } from '~/component';
-import { faEllipsisH, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 
 import { listSongs } from '~/assets';
 const cx = classNames.bind(styles);
 
 function NavBarRight() {
-    const [waitingList, setWaitingList] = useState(listSongs.filter((item) => item.song_id !== 0));
-    const [isOpen, setIsOpen] = useState({ index: 0, id: 0 });
-    // console.log(isOpen);
-    const [ListOpen, setListOpen] = useState([listSongs[0]]);
+    const valueSong = useContext(SongPlayContext);
+    const { idSong, setIdSong } = valueSong;
 
-    // console.log(waitingList[0]);
+    const [waitingList, setWaitingList] = useState(listSongs.filter((item) => item.song_id !== idSong));
+    const [isOpen, setIsOpen] = useState({ index: 0, id: idSong });
+    const [ListOpen, setListOpen] = useState([listSongs[idSong]]);
+
+    useEffect(() => {
+        const checkIsSong = () => {
+            for (let i = 0; i < ListOpen.length; i++) {
+                if (ListOpen[i].song_id === idSong) {
+                    return { index: i, isListOpen: true, song: ListOpen[i] };
+                }
+            }
+            return { isListOpen: false, song: listSongs[idSong] };
+        };
+
+        const songCheck = checkIsSong();
+
+        if (isOpen.id !== idSong) {
+            if (songCheck.isListOpen) {
+                setIsOpen({ index: songCheck.index, id: idSong });
+            } else {
+                handelPlaySong(songCheck.song);
+            }
+        }
+    }, [idSong]);
 
     const handelPlaySong = (song) => {
         setWaitingList((iprev) => {
@@ -26,10 +49,12 @@ function NavBarRight() {
         });
         setIsOpen({ index: ListOpen.length, id: song.song_id });
         setListOpen((iprev) => [...iprev, song]);
+        setIdSong(song.song_id);
     };
 
     const handelClick = ({ index, idSong }) => {
         setIsOpen({ index: index, id: idSong });
+        setIdSong(idSong);
     };
 
     // Xử lý khi hết bài hát

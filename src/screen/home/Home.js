@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './styleHome.module.scss';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import PlayListMV from './PlayListMV';
 import HomeMain from './HomeMain';
 import SingerBox from './Singer';
+import SongPlayContext from '~/store/Context';
 import { ButtomCop, IconComp, HeaderBox, WraMouse, ItemSongInfo } from '~/component';
 
 import { listSongs } from '~/assets';
@@ -14,8 +16,9 @@ import { avatar } from '~/assets';
 const cx = classNames.bind(styles);
 
 function HomeScreen() {
+    const valueSong = useContext(SongPlayContext);
+
     const [isShowAll, setIsShowAll] = useState(false);
-    const [isActive, setIsActive] = useState(0);
     const [pages, setPages] = useState(0);
 
     const handelClick = (index) => {
@@ -73,13 +76,13 @@ function HomeScreen() {
                                 <ItemSongInfo
                                     key={song.song_id}
                                     isSongHome
-                                    isActive={song.song_id === isActive}
+                                    isActive={song.song_id === valueSong.idSong}
                                     imageSong={song.song_img}
                                     name={song.song_name}
                                     singer={song.singer}
                                     duration={'04.05'}
                                     heightStyle={6}
-                                    onClick={() => setIsActive(song.song_id)}
+                                    onClick={() => valueSong.setIdSong(song.song_id)}
                                 />
                             ))}
                         </div>

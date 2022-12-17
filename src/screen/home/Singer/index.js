@@ -7,7 +7,7 @@ import styles from './style.module.scss';
 import { WraMouse, HeaderBox, ImageHoverZoom, ButtomCop } from '~/component';
 
 import { SingerInfos } from '~/assets/dataRender';
-import { faAdd, faRandom } from '@fortawesome/free-solid-svg-icons';
+import { faRandom } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 function SingerBox({ style }) {

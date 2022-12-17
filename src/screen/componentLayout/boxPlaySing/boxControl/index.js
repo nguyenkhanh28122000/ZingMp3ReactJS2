@@ -1,22 +1,30 @@
+import { useEffect, useState, useContext, memo } from 'react';
+
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 
-import { colors } from '~/assets';
+import { faCaretLeft, faCaretRight, faPause, faPlay, faRandom, faRedo } from '@fortawesome/free-solid-svg-icons';
+
+import SongPlayContext from '~/store/Context';
 
 import { IconComp } from '~/component';
-import { faCaretLeft, faCaretRight, faPause, faPlay, faRandom, faRedo } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+
+import { colors, listSongs } from '~/assets';
 const cx = classNames.bind(styles);
 
 function BoxControl() {
-    const [isPlay, setIsPlay] = useState(false);
+    const valueSong = useContext(SongPlayContext);
+    const { idSong, setIdSong, isPlay, setIsPlay } = valueSong;
+
     const [valueAudio, setValueAudio] = useState(0);
     const [timeSong, setTimeSong] = useState(0);
+
     const [isRandom, setIsRandom] = useState(false);
     const [isRepeat, setIsRepeat] = useState(false);
     const [clickLeft, setClickLeft] = useState(false);
     const [clickRight, setClickRight] = useState(false);
 
+    // lay time render
     const secondsToHms = (timeSong) => {
         var h = Math.floor(timeSong / 3600);
         var m = Math.floor((timeSong % 3600) / 60);
@@ -35,12 +43,14 @@ function BoxControl() {
 
     // chuyển bài
     const handelClickLeft = () => {
+        setIdSong(idSong - 1);
         setClickLeft(true);
         setTimeout(() => {
             setClickLeft(false);
         }, 300);
     };
     const handelClickRight = () => {
+        setIdSong(idSong + 1);
         setClickRight(true);
         setTimeout(() => {
             setClickRight(false);
@@ -54,6 +64,7 @@ function BoxControl() {
             setIsRepeat(false);
         }
     };
+
     // repeat
     const handelClickRepeat = () => {
         setIsRepeat(!isRepeat);
@@ -137,4 +148,4 @@ function BoxControl() {
     );
 }
 
-export default BoxControl;
+export default memo(BoxControl);

@@ -1,14 +1,17 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 
+import SongPlayContext from '~/store/Context';
 import { HeaderBox, WraMouse, ItemSongInfo, ListImgSong } from '~/component';
 import { listSongs } from '~/assets';
 const cx = classNames.bind(styles);
 
 function HomeMain({ style }) {
+    const valueSong = useContext(SongPlayContext);
+
     const [isShowAll, setIsShowAll] = useState(false);
-    const [isActive, setIsActive] = useState(0);
+    // const [isActive, setIsActive] = useState(0);
     const [id, setId] = useState(0);
 
     useEffect(() => {
@@ -50,13 +53,13 @@ function HomeMain({ style }) {
                         <ItemSongInfo
                             key={song.song_id}
                             isSongHome
-                            isActive={song.song_id === isActive}
+                            isActive={song.song_id === valueSong.idSong}
                             imageSong={song.song_img}
                             name={song.song_name}
                             singer={song.singer}
                             duration={'04.05'}
                             heightStyle={6}
-                            onClick={() => setIsActive(song.song_id)}
+                            onClick={() => valueSong.setIdSong(song.song_id)}
                         />
                     ))}
                 </div>

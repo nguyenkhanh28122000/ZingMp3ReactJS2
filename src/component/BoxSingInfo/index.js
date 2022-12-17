@@ -1,6 +1,5 @@
-import { memo, useEffect } from 'react';
+import { memo, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
@@ -8,18 +7,31 @@ import styles from './style.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faPlay, faEllipsisH, faPhotoVideo, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
+import SongPlayContext from '~/store/Context';
+
 import { songImgs } from '~/assets';
 
 const cx = classNames.bind(styles);
 
 function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, className, onClick, ...rest }) {
-    const [isPlay, setIsPlay] = useState(isActive ? true : false);
+    // console.log(name, isActive);
+    const valueSong = useContext(SongPlayContext);
+    const { isPlay, setIsPlay } = valueSong;
+
+    const [isPlay2, setIsPlay2] = useState(isPlay);
+
+    useEffect(() => {
+        setIsPlay2(isPlay);
+    }, [isPlay]);
 
     useEffect(() => {
         if (isActive) {
-            setIsPlay(true);
+            setIsPlay2(true);
+            if (isPlay === false) {
+                setIsPlay(true);
+            }
         } else {
-            setIsPlay(false);
+            setIsPlay2(false);
         }
     }, [isActive]);
 
@@ -29,7 +41,10 @@ function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, 
     };
 
     const handelPause = () => {
-        setIsPlay(!isPlay);
+        setIsPlay2(!isPlay2);
+        if (isPlay === isPlay2) {
+            setIsPlay(!isPlay);
+        }
     };
 
     const clases = cx('wrapper', {
@@ -42,9 +57,9 @@ function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, 
         <div className={clases} {...props}>
             <img src={imageSong} alt={'error'} className={cx('play')} />
             <div className={cx('boxSongPlay')} onClick={handelPause}>
-                <img src={songImgs.ICONPLAY} alt="error" className={cx('songPlay', isPlay ? 'isPlay' : 'isPause')} />
+                <img src={songImgs.ICONPLAY} alt="error" className={cx('songPlay', isPlay2 ? 'isPlay' : 'isPause')} />
 
-                <FontAwesomeIcon icon={faPlay} className={cx('iconPlay', isPlay ? 'isPlay' : 'isPause')} />
+                <FontAwesomeIcon icon={faPlay} className={cx('iconPlay', isPlay2 ? 'isPlay' : 'isPause')} />
             </div>
 
             <div className={cx('info')}>
