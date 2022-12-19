@@ -1,28 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 
 import { faMicrophone, faPhotoVideo, faVolumeDown, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
+
+import SongPlayContext from '~/store/Context';
 
 import { IconComp } from '~/component';
 import { colors } from '~/assets';
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
 const cx = classNames.bind(styles);
 
 function BoxControlVolume() {
-    const [valueVolume, setValueVolume] = useState(20);
+    const valueSong = useContext(SongPlayContext);
+    const { volume, setVolume } = valueSong;
+
+    const [valueVolume, setValueVolume] = useState(volume);
     const [isMute, setIsMute] = useState(false);
 
     useEffect(() => {
         if (isMute) {
             setValueVolume(0);
         } else {
-            setValueVolume(20);
+            setValueVolume(volume > 50 ? volume : 50);
         }
     }, [isMute]);
 
     useEffect(() => {
+        setVolume(valueVolume);
         if (valueVolume == 0) {
             setIsMute(true);
         }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
@@ -9,9 +9,15 @@ const cx = classNames.bind(styles);
 
 function ItemSongInfo({ imageSong, name, singer, heightStyle, isActive, duration, isSongHome, onClick }) {
     // const [isActive, setIsActive] = useState(false);
+    const divRef = useRef();
+    if (divRef.current && isActive && !isSongHome) {
+        setTimeout(() => {
+            divRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+        }, 1000);
+    }
 
     return (
-        <div className={cx('wrapper')} style={{ height: `${heightStyle}rem` }}>
+        <div ref={divRef} className={cx('wrapper')} style={{ height: `${heightStyle}rem` }}>
             <BoxSingInfo
                 imageSong={imageSong}
                 name={name}

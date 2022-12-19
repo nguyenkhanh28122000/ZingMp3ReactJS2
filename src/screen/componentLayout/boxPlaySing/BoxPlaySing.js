@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './boxPlaySing.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-
+import SongPlayContext from '~/store/Context';
 import BoxControl from './boxControl';
 import InfoSong from './infoSong';
 import BoxControlVolume from './boxControlVolume';
@@ -17,13 +17,18 @@ const cx = classNames.bind(styles);
 function BoxPlaySing() {
     const [showSong, setShowSong] = useState(false);
 
+    const valueSong = useContext(SongPlayContext);
+    const { idSong, isPause } = valueSong;
+
+    console.log(isPause);
     return (
         <div className={cx('wrapper')}>
             <div style={{ flex: 1 }}>
                 <InfoSong
-                    img={listSongs[0].song_img}
-                    nameSong={listSongs[0].song_name}
-                    singerName={listSongs[0].singer}
+                    img={listSongs[idSong].song_img}
+                    nameSong={listSongs[idSong].song_name}
+                    singerName={listSongs[idSong].singer}
+                    isPause={isPause}
                     onClick={() => setShowSong(!showSong)}
                 />
             </div>

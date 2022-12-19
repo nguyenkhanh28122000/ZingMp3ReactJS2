@@ -16,20 +16,22 @@ const cx = classNames.bind(styles);
 function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, className, onClick, ...rest }) {
     // console.log(name, isActive);
     const valueSong = useContext(SongPlayContext);
-    const { isPlay, setIsPlay } = valueSong;
+    const { isPause, setIsPause } = valueSong;
 
-    const [isPlay2, setIsPlay2] = useState(isPlay);
-
-    useEffect(() => {
-        setIsPlay2(isPlay);
-    }, [isPlay]);
+    const [isPlay2, setIsPlay2] = useState(isPause);
 
     useEffect(() => {
         if (isActive) {
-            setIsPlay2(true);
-            if (isPlay === false) {
-                setIsPlay(true);
-            }
+            setIsPlay2(isPause);
+        }
+    }, [isPause]);
+
+    useEffect(() => {
+        if (isActive) {
+            setIsPlay2(isPause);
+            // if (isPause === false) {
+            //     setIsPause(true);
+            // }
         } else {
             setIsPlay2(false);
         }
@@ -42,8 +44,8 @@ function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, 
 
     const handelPause = () => {
         setIsPlay2(!isPlay2);
-        if (isPlay === isPlay2) {
-            setIsPlay(!isPlay);
+        if (isPause === isPlay2) {
+            setIsPause(!isPause);
         }
     };
 
@@ -57,9 +59,9 @@ function BoxSingInfo({ imageSong, name, singer, isActive, isSongHome, duration, 
         <div className={clases} {...props}>
             <img src={imageSong} alt={'error'} className={cx('play')} />
             <div className={cx('boxSongPlay')} onClick={handelPause}>
-                <img src={songImgs.ICONPLAY} alt="error" className={cx('songPlay', isPlay2 ? 'isPlay' : 'isPause')} />
+                <img src={songImgs.ICONPLAY} alt="error" className={cx('songPlay', isPlay2 ? 'isPause' : 'isPlay')} />
 
-                <FontAwesomeIcon icon={faPlay} className={cx('iconPlay', isPlay2 ? 'isPlay' : 'isPause')} />
+                <FontAwesomeIcon icon={faPlay} className={cx('iconPlay', isPlay2 ? 'isPause' : 'isPlay')} />
             </div>
 
             <div className={cx('info')}>

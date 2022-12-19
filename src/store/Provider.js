@@ -3,13 +3,15 @@ import SongPlayContext from './Context';
 
 function Provider({ children }) {
     const [idSong, setIdSong] = useState(0);
-    const [isPlay, setIsPlay] = useState(false);
-
+    const [isPause, setIsPause] = useState(true);
+    const [volume, setVolume] = useState(50);
     const value = {
         idSong,
         setIdSong,
-        isPlay,
-        setIsPlay,
+        isPause,
+        setIsPause,
+        volume,
+        setVolume,
     };
 
     return <SongPlayContext.Provider value={value}>{children}</SongPlayContext.Provider>;

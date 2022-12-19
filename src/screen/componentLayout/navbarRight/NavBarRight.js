@@ -1,4 +1,4 @@
-import { useState, memo, useContext, useEffect } from 'react';
+import { useState, memo, useContext, useEffect, useRef } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './navbarRight.module.scss';
@@ -21,6 +21,8 @@ function NavBarRight() {
     const [isOpen, setIsOpen] = useState({ index: 0, id: idSong });
     const [ListOpen, setListOpen] = useState([listSongs[idSong]]);
 
+    // const boxSongRef = useRef();
+    // console.log(boxSongRef.current);
     useEffect(() => {
         const checkIsSong = () => {
             for (let i = 0; i < ListOpen.length; i++) {
@@ -92,6 +94,7 @@ function NavBarRight() {
                 {ListOpen.map((song, index) => {
                     return (
                         <ItemSongInfo
+                            // ref={boxSongRef}
                             key={song.song_id}
                             imageSong={song.song_img}
                             name={song.song_name}
